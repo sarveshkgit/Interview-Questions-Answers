@@ -67,14 +67,14 @@ docker push myapi	Push image to registry
 Q8. How do you create a Docker image?
 Create a Dockerfile in the project, then run the build command from that directory:
 
-bash
+
 docker build -t myapi:v1 .
 
 -t assigns a name and tag, and the dot is the build context (current directory).
 
 Q9. How do you run a container?
 
-bash
+
 docker run -d \
   --name myapi \
   -p 8080:8080 \
@@ -126,7 +126,7 @@ services:
       - "3000:80"
     depends_on:
       - backend
-bash
+
 docker compose up -d
 
 Q18. Docker Compose vs Kubernetes?
@@ -139,7 +139,7 @@ First, docker ps -a to see stopped containers. Then docker logs myapi and docker
 
 Q20. How do you check container logs?
 
-bash
+
 docker logs myapi        # view logs
 docker logs -f myapi     # follow logs live
 
@@ -167,7 +167,7 @@ Note: the runtime image must have curl installed for this to work. ALB health ch
 
 Q24. How do you pass environment variables?
 
-bash
+
 docker run -d \
   -e ASPNETCORE_ENVIRONMENT=Production \
   -p 8080:8080 \
@@ -196,7 +196,6 @@ Q30. How do you implement rollback?
 We keep version-specific image tags, like myapi:101, myapi:102, myapi:103. If 103 has an issue, we redeploy 102 without rebuilding anything, then verify application health.
 
 Q31. How do you secure Docker containers?
-
 Use trusted, maintained base images
 Avoid running as root where possible
 Scan images for vulnerabilities
@@ -221,8 +220,9 @@ Jenkins can’t push to ECR	Check IAM permissions and authentication
 Runs locally but not on EC2	Check env variables, ports, runtime, architecture
 Frontend can’t call backend	Check API URL, DNS, routing, CORS
 Logs missing	Check logging configuration and CloudWatch integration
+
 7. Command Revision Sheet
-bash
+
 docker build -t myapi:v1 .          # build image
 docker images                       # list images
 docker run -d -p 8080:8080 myapi:v1 # run container
@@ -237,7 +237,9 @@ docker rmi myapi:v1                 # remove image
 docker system df                    # disk usage
 docker compose up -d                # start Compose services
 docker compose down                 # stop and remove Compose services
+
 8. Top 10 Questions to Prepare First
+
 What is Docker and why do we use it?
 Image vs container?
 Explain Docker architecture.
@@ -248,7 +250,9 @@ How do you deploy Docker containers on AWS EC2?
 How do you push Docker images to Amazon ECR?
 Explain Docker integration with Jenkins CI/CD.
 How do you troubleshoot and roll back a failed Docker deployment?
+
 9. Mini Mock Quiz
+
 Image vs container? An image is a blueprint; a container is its running instance.
 Where are images stored in your AWS project? Amazon ECR.
 Which build technique reduces final .NET image size? Multi-stage build.
